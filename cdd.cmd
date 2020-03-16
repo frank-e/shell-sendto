@@ -2,11 +2,13 @@
 setlocal enableextensions & prompt @
 if not "%~2" == ""     call "%~0" "%*"
 if not "%~2" == ""     goto DONE & @rem expect one argument
-if     "%~1" == ""     goto TEMP & @rem expect one argument
+if     "%~1" == ""     goto HELP & @rem expect one argument
 if     "%~1" == "?"    goto HELP & @rem missing switch char
 if     "%~1" == "/?"   goto HELP & @rem minimal requirement
 if     "%~1" == "-?"   goto HELP & @rem permit DOS SWITCHAR
 :DOIT --------------------------------------------------------------
+set NEED=takeown.exe
+for %%x in (%NEED%) do if not exist "%%~f$PATH:x" goto NEED
 set NEED=%~f1
 if not exist "%NEED%"  goto NEED
 if     exist "%~f1\*"  cd /D "%~f1\."
@@ -14,8 +16,6 @@ if     exist "%~f1\*"  goto OKAY & @rem valid directory
 if     exist "%~f1\.." cd /D "%~f1\.."
 if     exist "%~f1\.." goto OKAY & @rem valid parent
 goto NEED
-:TEMP --------------------------------------------------------------
-if /I "%CD%" == "%SystemRoot%\System32" cd /D "%TEMP%"
 :OKAY --------------------------------------------------------------
 endlocal & cd /D "%CD%"
 goto DONE
