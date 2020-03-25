@@ -43,13 +43,17 @@ goto HELP
 echo/
 echo Error: %0 found no "%NEED%"
 :HELP --------------------------------------------------------------
-echo Usage: %0 FILE1 [FILE2]
+echo Usage: %0 PATH1 [PATH2]
 echo/
-echo If both paths are given and exist the script starts comparison
-echo with %ProgramFiles%\Perforce\P4merge.exe
-echo If FILE2 is not given in can be specified manually as relative
-echo PATH2 from the directory of the first file.  The file name and
-echo extension in PATH2 can be omitted if they match PATH1.
+echo If both paths are given and exist %0 starts
+echo %ProgramFiles%\Perforce\P4merge.exe PATH1 PATH2
+echo/
+echo PATH2 can be specified interactively, absolute or relative to
+echo the directory of the 1st file, with the usual file name input
+echo completion.  The PATH1 file name is the default for PATH2.
+echo/
+echo Maybe create a shell::sendto shortcut (link) for
+echo %%COMSPEC%% /k %~dpnx0
 echo/
 :WAIT if first CMD line option was /c ------------------------------
 set NEED=usebackq tokens=2 delims=/
