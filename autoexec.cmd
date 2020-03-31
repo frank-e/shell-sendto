@@ -19,6 +19,7 @@ doskey mediainfo=@"%ProgramW6432%\sysinternals\mediainfo\mediacmd.exe" $*
 doskey wordpad=@"%ProgramW6432%\Windows NT\Accessories\wordpad.exe" $*
 doskey imagex=@"%ProgramW6432%\Windows AIK\Tools\amd64\imagex.exe" $*
 doskey oscdimg=@"%ProgramW6432%\Windows AIK\Tools\amd64\oscdimg.exe" $*
+doskey checksur=@Dism.exe /Online /Cleanup-Image /ScanHealth $*
 doskey xedit=@"%ProgramFiles(x86)%\KEDITW\KEDITW32.exe" $*
 doskey xnview=@"%ProgramFiles(x86)%\XnView\XnView.exe" $*
 doskey nconvert=@"%ProgramFiles(x86)%\XnView\nconvert.exe" $*

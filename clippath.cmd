@@ -13,9 +13,9 @@ set NEED=%~1
 if not exist "%NEED%"  goto NEED
 echo echo %~f1^|clip.exe
 call echo %~f1|clip.exe
+if     errorlevel 1    echo Error: %0 got exit code [%ErrorLevel%]
+if     errorlevel 1    goto WAIT
 if not errorlevel 1    goto DONE
-echo Error: %0 got exit code [%ErrorLevel%]
-goto WAIT
 :NEED --------------------------------------------------------------
 echo/
 echo Error: %0 found no "%NEED%"
@@ -30,4 +30,3 @@ echo/
 set NEED=usebackq tokens=2 delims=/
 for /F "%NEED% " %%c in ('%CMDCMDLINE%') do if /I "%%c" == "c" pause
 :DONE -------------- (Frank Ellermann, 2016) -----------------------
-

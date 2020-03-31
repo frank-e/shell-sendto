@@ -16,14 +16,18 @@ if not exist "%~1\*"    set NEED=   /A /F
 echo takeown.exe %NEED% "%~f1" 1>&2
 @takeown.exe %NEED% "%~f1"
 if     errorlevel 1    echo Error: %0 got exit code [%ERRORLEVEL%]
-goto WAIT
+if     errorlevel 1    goto WAIT
+if "%NEED%" == "/A /F" goto DONE
+goto WAIT                        & @REM after recursive /R /A /F
 :NEED --------------------------------------------------------------
 echo/
 echo Error: %0 found no "%NEED%"
 :HELP --------------------------------------------------------------
 echo Usage: %0 FILE
 echo/
-echo This admin shorthand for TAKEOWN.exe /R /A /F FILE can handle
+echo This admin shorthand for TAKEOWN.exe [/R] /A /F FILE uses /A /F
+echo for a FILE or /R /A /F for a sub-directory tree.  Option /A for
+echo new owner admin-group, /R for recursive, see TAKEOWN.exe /?
 echo/
 echo Maybe create a shell::sendto shortcut (link) for
 echo %%COMSPEC%% /k %~dpnx0
