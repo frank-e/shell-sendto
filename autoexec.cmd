@@ -2,13 +2,11 @@
 doskey alias=doskey /m $*
 doskey where=where /T $*
 doskey 8888=ping -t 8.8.8.8
-doskey cool=taskkill /f /im chrome.exe$Tresmon.exe
 doskey wifi=netsh int set int WiFi DISABLED$tnetsh int set int WiFi ENABLED
 doskey tops=resmon.exe $*
-doskey tatort=youtube-dl -f http-2 $*
 doskey ffmpeg=ansicon -m ffmpeg.exe -hide_banner $*
 doskey ffprobe=ansicon -m ffprobe.exe -hide_banner $*
-doskey paste=for /F "tokens=*" %%T in ('pwsh Get-Clipboard') do @echo %%T
+doskey hmd=@echo hmdmhdfmhdjmzdtjmzdtzktdkztdjz@gmail.com$bclip.exe
 doskey wmk=for %%D in (%%CD%%) do wmake -h -f %%~nD.wmk $*
 doskey ydl=youtube-dl.exe $*
 doskey 7za=@"%ProgramW6432%\7-ZIP\7za.exe" $*
